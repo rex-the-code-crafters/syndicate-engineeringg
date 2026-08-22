@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get a Quote — Syndicate Engineering</title>
+<meta name="description" content="Request a free construction estimate quote from Syndicate Engineering. Fast turnaround, 18 trades, worldwide service.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: #050A0F; color: #fff; font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+
+  .reveal { opacity: 0; transform: translateY(44px); transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  #main-nav.scrolled { background: rgba(5,10,15,0.92) !important; backdrop-filter: blur(24px) !important; border-bottom-color: rgba(0,212,255,0.15) !important; }
+  .nav-links a:hover { color: #00D4FF !important; }
+
+  @media (max-width: 1024px) { .nav-links { display: none !important; } .nav-phone { display: none !important; } }
+  @media (max-width: 900px) { .quote-layout { flex-direction: column !important; } .quote-sidebar { width: 100% !important; margin-top: 48px; } }
+  @media (max-width: 768px) { #main-nav { padding: 0 20px !important; } .hero-inner { padding: 0 28px !important; } .form-row { flex-direction: column !important; } .quote-section { padding: 80px 28px 100px !important; } .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 40px !important; } }
+  @media (max-width: 560px) { .nav-cta { display: none !important; } .logo-sub { display: none !important; } }
+  @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr !important; } }
+
+  .nav-burger { display: none !important; }
+  @media (max-width: 1024px) { .nav-burger { display: flex !important; } }
+  #nav-drawer.open { transform: translateX(0) !important; }
+  body.nav-locked { overflow: hidden; }
+  #nav-burger.open .bl1 { transform: translateY(6.5px) rotate(45deg); }
+  #nav-burger.open .bl2 { opacity: 0; }
+  #nav-burger.open .bl3 { transform: translateY(-6.5px) rotate(-45deg); }
+  .dl-item { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 27px; font-weight: 600; color: #fff; letter-spacing: -.01em; padding: 17px 0; border-bottom: 1px solid rgba(0,212,255,.1); transition: color .2s, padding-left .25s; }
+  .dl-item:hover { color: #00D4FF; padding-left: 9px; }
+
+  .q-field { background: rgba(10,22,40,0.9); border: 1px solid rgba(0,212,255,0.2); color: #C8D6E5; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 300; padding: 14px 18px; width: 100%; outline: none; transition: border-color 0.2s, box-shadow 0.2s; -webkit-appearance: none; appearance: none; }
+  .q-field:focus { border-color: rgba(0,212,255,0.55); box-shadow: 0 0 0 3px rgba(0,212,255,0.08); }
+  .q-field::placeholder { color: #3D5068; }
+  .q-field.error { border-color: rgba(255,99,99,0.6) !important; }
+
+  select.q-field { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238599B0' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; cursor: pointer; }
+  select.q-field option { background: #0A1628; color: #C8D6E5; }
+
+  .submit-btn { background: #00D4FF; color: #050A0F; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; padding: 18px 40px; border: 1.5px solid #00D4FF; cursor: pointer; width: 100%; transition: all 0.3s; box-shadow: 0 0 24px rgba(0,212,255,0.2); }
+  .submit-btn:hover { box-shadow: 0 0 40px rgba(0,212,255,0.4); }
+  .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .footer-link:hover { color: #00D4FF !important; }
+  .social-btn:hover { border-color: #00D4FF !important; background: rgba(0,212,255,0.08) !important; }
+
+  /* Mobile: footer and section padding */
+  @media (max-width: 768px) {
+    footer { padding-left: 28px !important; padding-right: 28px !important; }
+  }
+  /* Mobile: hero section */
+  @media (max-width: 768px) {
+    section { padding-left: 28px !important; padding-right: 28px !important; }
+  }
+  /* Mobile: sidebar stats grid */
+  @media (max-width: 480px) {
+    .sidebar-stats { grid-template-columns: 1fr 1fr !important; }
+  }
+
+  #form-done { display: none; }
+  #form-live { display: block; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav" style="position:fixed;top:0;left:0;right:0;z-index:1000;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;border-bottom:1px solid transparent;transition:all 0.4s ease;">
+  <a href="index.html" style="display:flex;align-items:center;gap:14px;">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="1" y="1" width="13" height="13" stroke="#00D4FF" stroke-width="1.5"/><rect x="18" y="1" width="13" height="13" stroke="#00D4FF" stroke-width="1.5" opacity="0.35"/><rect x="1" y="18" width="13" height="13" stroke="#00D4FF" stroke-width="1.5" opacity="0.35"/><rect x="18" y="18" width="13" height="13" stroke="#FFB347" stroke-width="1.5"/><line x1="14" y1="7.5" x2="18" y2="7.5" stroke="#00D4FF" stroke-width="1"/><line x1="7.5" y1="14" x2="7.5" y2="18" stroke="#00D4FF" stroke-width="1"/><line x1="24.5" y1="14" x2="24.5" y2="18" stroke="#FFB347" stroke-width="1"/></svg>
+    <div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;letter-spacing:0.05em;color:#fff;line-height:1.1;">SYNDICATE <span style="color:#00D4FF;">ENGINEERING</span></div>
+      <div class="logo-sub" style="font-family:'DM Sans',sans-serif;font-size:9px;color:#8599B0;letter-spacing:0.22em;text-transform:uppercase;margin-top:2px;">Pre-Construction Excellence</div>
+    </div>
+  </a>
+  <div class="nav-links" style="display:flex;align-items:center;gap:36px;">
+    <a href="index.html" style="font-family:'DM Sans',sans-serif;font-size:12px;color:#C8D6E5;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;">Home</a>
+    <a href="index.html#about" style="font-family:'DM Sans',sans-serif;font-size:12px;color:#C8D6E5;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;">About</a>
+    <a href="services.html" style="font-family:'DM Sans',sans-serif;font-size:12px;color:#C8D6E5;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;">Services</a>
+    <a href="samples.html" style="font-family:'DM Sans',sans-serif;font-size:12px;color:#C8D6E5;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;">Samples</a>
+    <a href="index.html#contact" style="font-family:'DM Sans',sans-serif;font-size:12px;color:#C8D6E5;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;">Contact</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:20px;">
+    <span class="nav-phone" style="font-family:'DM Sans',sans-serif;font-size:13px;color:#8599B0;">+1 239 300 2279</span>
+    <a class="nav-cta" href="get-a-quote.html" style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;color:#00D4FF;border:1.5px solid #00D4FF;padding:9px 22px;letter-spacing:0.1em;text-transform:uppercase;box-shadow:0 0 12px rgba(0,212,255,0.15);transition:all 0.3s;">Get a Quote →</a>
+    <button class="nav-burger" id="nav-burger" type="button" aria-label="Open menu" aria-expanded="false" style="align-items:center;justify-content:center;width:42px;height:42px;background:transparent;border:1px solid rgba(0,212,255,.3);cursor:pointer;padding:0;flex-shrink:0;">
+      <span style="display:flex;flex-direction:column;gap:5px;">
+        <span class="bl bl1" style="display:block;width:18px;height:1.5px;background:#00D4FF;transition:transform .3s,opacity .3s;"></span>
+        <span class="bl bl2" style="display:block;width:18px;height:1.5px;background:#00D4FF;transition:transform .3s,opacity .3s;"></span>
+        <span class="bl bl3" style="display:block;width:18px;height:1.5px;background:#00D4FF;transition:transform .3s,opacity .3s;"></span>
+      </span>
+    </button>
+  </div>
+</nav>
+
+<div id="nav-drawer" style="position:fixed;inset:0;z-index:999;transform:translateX(100%);transition:transform .45s cubic-bezier(.16,1,.3,1);flex-direction:column;justify-content:center;padding:104px 32px 44px;background:rgba(5,10,15,.98);display:flex;overflow-y:auto;">
+  <div style="display:flex;flex-direction:column;">
+    <a class="dl-item" href="index.html">Home</a>
+    <a class="dl-item" href="index.html#about">About</a>
+    <a class="dl-item" href="services.html">Services</a>
+    <a class="dl-item" href="samples.html">Samples</a>
+    <a class="dl-item" href="index.html#contact">Contact</a>
+  </div>
+  <div style="margin-top:40px;display:flex;flex-direction:column;gap:14px;">
+    <a href="get-a-quote.html" style="display:block;text-align:center;background:#00D4FF;color:#050A0F;font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:17px 24px;">Get a Free Quote →</a>
+    <a href="tel:+12393002279" style="font-family:'DM Sans',sans-serif;font-size:15px;color:#8599B0;">+1 239 300 2279</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section style="padding:160px 72px 80px;background-color:#050A0F;background-image:linear-gradient(rgba(0,212,255,0.032) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.032) 1px,transparent 1px);background-size:64px 64px;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:50%;right:-5%;transform:translateY(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(0,212,255,0.07) 0%,transparent 65%);pointer-events:none;" aria-hidden="true"></div>
+  <div class="hero-inner reveal" style="max-width:1280px;margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;font-family:'DM Sans',sans-serif;font-size:13px;color:#8599B0;">
+      <a href="index.html" style="color:#8599B0;">Home</a>
+      <span style="color:#3D5068;">/</span>
+      <span style="color:#00D4FF;">Get a Quote</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+      <div style="width:32px;height:1px;background:#00D4FF;"></div>
+      <span style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:#00D4FF;">Free Consultation</span>
+    </div>
+    <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(38px,5vw,76px);font-weight:700;letter-spacing:-0.025em;color:#fff;line-height:1.06;margin-bottom:22px;">Start Your<br><span style="color:#00D4FF;">Free Estimate</span></h1>
+    <p style="font-family:'DM Sans',sans-serif;font-size:18px;font-weight:300;color:#8599B0;max-width:580px;line-height:1.75;">Tell us about your project and we'll respond within a few hours with a quote, timeline, and any questions.</p>
+  </div>
+</section>
+
+<!-- QUOTE FORM SECTION -->
+<section class="quote-section" style="padding:60px 72px 120px;background:#050A0F;">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div class="quote-layout" style="display:flex;gap:64px;align-items:flex-start;">
+
+      <!-- FORM -->
+      <div style="flex:1;min-width:0;">
+
+        <!-- SUCCESS STATE -->
+        <div id="form-done" style="background:rgba(0,212,255,0.05);border:1px solid rgba(0,212,255,0.3);padding:64px 48px;text-align:center;">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" style="margin:0 auto 28px;" aria-hidden="true">
+            <circle cx="28" cy="28" r="26" stroke="#00D4FF" stroke-width="1.5"/>
+            <polyline points="17,28 24,35 39,20" stroke="#00D4FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;color:#fff;margin-bottom:14px;">Quote Request Sent!</h2>
+          <p style="font-family:'DM Sans',sans-serif;font-size:17px;font-weight:300;color:#8599B0;line-height:1.75;margin-bottom:36px;">Thank you! Our team will review your project details and get back to you within a few hours. In the meantime, feel free to browse our sample work.</p>
+          <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+            <a href="samples.html" style="display:inline-block;background:transparent;color:#00D4FF;font-family:'DM Sans',sans-serif;font-weight:600;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;padding:14px 28px;border:1.5px solid rgba(0,212,255,0.4);">Browse Samples</a>
+            <a href="index.html" style="display:inline-block;background:transparent;color:#8599B0;font-family:'DM Sans',sans-serif;font-weight:400;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;padding:14px 28px;border:1.5px solid rgba(255,255,255,0.1);">Back to Home</a>
+          </div>
+        </div>
+
+        <!-- LIVE FORM -->
+        <form id="form-live" novalidate>
+          <div style="margin-bottom:44px;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#00D4FF;margin-bottom:6px;">Step 1 of 2</div>
+            <h2 style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;color:#fff;margin-bottom:4px;">Your Information</h2>
+            <p style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;">Tell us who you are so we can send your quote directly.</p>
+          </div>
+
+          <div class="form-row" style="display:flex;gap:16px;margin-bottom:16px;">
+            <div style="flex:1;">
+              <label for="q-name" style="display:block;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#C8D6E5;margin-bottom:8px;">Full Name <span style="color:#00D4FF;">*</span></label>
+              <input class="q-field" type="text" id="q-name" name="name" placeholder="John Smith" required autocomplete="name"/>
+            </div>
+            <div style="flex:1;">
+              <label for="q-company" style="display:block;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#C8D6E5;margin-bottom:8px;">Company Name</label>
+              <input class="q-field" type="text" id="q-company" name="company" placeholder="ABC Construction" autocomplete="organization"/>
+            </div>
+          </div>
+
+          <div class="form-row" style="display:flex;gap:16px;margin-bottom:16px;">
+            <div style="flex:1;">
+              <label for="q-email" style="display:block;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#C8D6E5;margin-bottom:8px;">Email Address <span style="color:#00D4FF;">*</span></label>
+              <input class="q-field" type="email" id="q-email" name="email" placeholder="john@company.com" required autocomplete="email"/>
+              <div id="email-error" style="display:none;font-family:'DM Sans',sans-serif;font-size:12px;color:#FF6363;margin-top:6px;">Please enter a valid email address.</div>
+            </div>
+            <div style="flex:1;">
+              <label for="q-phone" style="display:block;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#C8D6E5;margin-bottom:8px;">Phone Number</label>
+              <input class="q-field" type="tel" id="q-phone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel"/>
+            </div>
+          </div>
+
+          <div style="height:1px;background:rgba(0,212,255,0.1);margin:40px 0;"></div>
+
+          <div style="margin-bottom:36px;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#00D4FF;margin-bottom:6px;">Step 2 of 2</div>
+            <h2 style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;color:#fff;margin-bottom:4px;">Project Details</h2>
+            <p style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;">The more detail you share, the faster and more accurate our quote will be.</p>
+          </div>
+
+          <div style="margin-bottom:16px;">
+            <label for="q-service" style="display:block;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#C8D6E5;margin-bottom:8px;">Service Required <span style="color:#00D4FF;">*</span></label>
+            <select class="q-field" id="q-service" name="service" required>
+              <option value="" disabled selected>Select a service…</option>
+              <optgroup label="Estimating">
+                <option value="Lumber Takeoff">Lumber Takeoff Services</option>
+                <option value="Framing Estimating">Framing Estimating</option>
+                <option value="Concrete Estimating">Concrete Estimating</option>
+                <option value="MEP Estimating">MEP Estimating Services</option>
+                <option value="HVAC Estimating">HVAC Estimating</option>
+                <option value="Electrical Takeoff">Electrical Takeoff</option>
+                <option value="Metals Estimating">Metals Estimating</option>
+                <option value="Openings Estimating">Openings Estimating</option>
+                <option value="Site Work Estimating">Site Work Estimating</option>
+                <option value="Drywall Estimating">Drywall Estimating</option>
+                <option value="Flooring Estimating">Flooring Estimating</option>
+                <option value="Painting Estimating">Painting Estimating</option>
+                <option value="Masonry Estimating">Masonry Estimating</option>
+              </optgroup>
+              <optgroup label="Management">
+                <option value="Project Management">Project Management</option>
+              </optgroup>
+              <optgroup label="Design &amp; Modeling">
+                <option value="CAD Services">CAD Services</option>
+                <option value="BIM Services">BIM Services</option>
+                <option value="Structural Design">Structural Design</option>
+                <option value="Architecture Design">Architecture Interior &amp; Exterior Design</option>
+              </optgroup>
+              <option value="Multiple Trades">Multiple Trades</option>
+              <option value="Not Sure">Not Sure — Help Me Decide</option>
+            </select>
+          </div>
+
+          <div class="form-row" style="display:flex;gap:16px;margin-bottom:16px;">
+            <div style="flex:1;">
+              <label for="q-location" style="display:block;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#C8D6E5;margin-bottom:8px;">Project Location</label>
+              <input class="q-field" type="text" id="q-location" name="location" placeholder="City, State / Country"/>
+            </div>
+            <div style="flex:1;">
+              <label for="q-bid-date" style="display:block;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#C8D6E5;margin-bottom:8px;">Bid / Due Date</label>
+              <input class="q-field" type="date" id="q-bid-date" name="bid_date" style="color-scheme:dark;"/>
+            </div>
+          </div>
+
+          <div style="margin-bottom:28px;">
+            <label for="q-scope" style="display:block;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#C8D6E5;margin-bottom:8px;">Project Scope &amp; Details</label>
+            <textarea class="q-field" id="q-scope" name="scope" rows="5" placeholder="Describe your project — type of building, square footage, number of floors, any specific requirements..." style="resize:vertical;min-height:120px;"></textarea>
+          </div>
+
+          <div style="background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.15);padding:18px 20px;margin-bottom:28px;display:flex;gap:14px;align-items:flex-start;">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" flex-shrink="0" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><circle cx="9" cy="9" r="8" stroke="#00D4FF" stroke-width="1.2"/><line x1="9" y1="5" x2="9" y2="10" stroke="#00D4FF" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="13" r="0.8" fill="#00D4FF"/></svg>
+            <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:#8599B0;line-height:1.65;">You can also email your plans directly to <a href="mailto:info@syndicateengineering.com" style="color:#00D4FF;">info@syndicateengineering.com</a> after submitting this form. Accepted formats: PDF, DWG, DXF, RVT, ZIP.</p>
+          </div>
+
+          <div id="form-error" style="display:none;background:rgba(255,99,99,0.08);border:1px solid rgba(255,99,99,0.3);padding:14px 18px;margin-bottom:20px;font-family:'DM Sans',sans-serif;font-size:13px;color:#FF6363;">Please fill in all required fields correctly before submitting.</div>
+
+          <button type="submit" class="submit-btn">Submit Quote Request →</button>
+
+          <p style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;color:#3D5068;margin-top:18px;text-align:center;">We typically respond within 2–4 business hours. Your information is kept confidential.</p>
+        </form>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="quote-sidebar" style="width:340px;flex-shrink:0;">
+
+        <div style="background:rgba(10,22,40,0.65);border:1px solid rgba(0,212,255,0.17);border-top:2px solid #00D4FF;padding:36px 30px;margin-bottom:20px;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#00D4FF;margin-bottom:24px;">What Happens Next</div>
+          <div style="display:flex;flex-direction:column;gap:20px;">
+            <div style="display:flex;gap:16px;align-items:flex-start;">
+              <div style="width:26px;height:26px;border:1.5px solid #00D4FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;color:#00D4FF;">1</div>
+              <div><div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:#fff;margin-bottom:4px;">We Review Your Request</div><p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:#8599B0;line-height:1.6;">Our team assesses scope, complexity, and service fit — usually within 2 hours.</p></div>
+            </div>
+            <div style="display:flex;gap:16px;align-items:flex-start;">
+              <div style="width:26px;height:26px;border:1.5px solid #00D4FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;color:#00D4FF;">2</div>
+              <div><div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:#fff;margin-bottom:4px;">You Receive a Quote</div><p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:#8599B0;line-height:1.6;">We send a clear price and timeline — no vague estimates or hidden fees.</p></div>
+            </div>
+            <div style="display:flex;gap:16px;align-items:flex-start;">
+              <div style="width:26px;height:26px;border:1.5px solid #00D4FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;color:#00D4FF;">3</div>
+              <div><div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:#fff;margin-bottom:4px;">We Get to Work</div><p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:#8599B0;line-height:1.6;">Once confirmed, our engineers begin immediately and keep you updated throughout.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:rgba(10,22,40,0.65);border:1px solid rgba(0,212,255,0.17);padding:36px 30px;margin-bottom:20px;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#00D4FF;margin-bottom:24px;">Prefer to Talk?</div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <a href="tel:+12393002279" style="display:flex;align-items:center;gap:14px;">
+              <div style="width:38px;height:38px;border:1px solid rgba(0,212,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+              </div>
+              <div><div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:#fff;margin-bottom:2px;">+1 239 300 2279</div><div style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;color:#8599B0;">Mon–Sat, 08:00–18:00 EST</div></div>
+            </a>
+            <a href="mailto:info@syndicateengineering.com" style="display:flex;align-items:center;gap:14px;">
+              <div style="width:38px;height:38px;border:1px solid rgba(0,212,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4" fill="none"/></svg>
+              </div>
+              <div><div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:#fff;margin-bottom:2px;">info@syndicateengineering.com</div><div style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;color:#8599B0;">We reply within hours</div></div>
+            </a>
+          </div>
+        </div>
+
+        <div style="background:rgba(10,22,40,0.65);border:1px solid rgba(0,212,255,0.17);padding:36px 30px;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#00D4FF;margin-bottom:24px;">By the Numbers</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+            <div><div style="font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;color:#00D4FF;line-height:1;letter-spacing:-0.02em;margin-bottom:6px;">346+</div><div style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;color:#8599B0;">Projects Done</div></div>
+            <div><div style="font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;color:#00D4FF;line-height:1;letter-spacing:-0.02em;margin-bottom:6px;">24H</div><div style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;color:#8599B0;">Avg. Turnaround</div></div>
+            <div><div style="font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;color:#00D4FF;line-height:1;letter-spacing:-0.02em;margin-bottom:6px;">18</div><div style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;color:#8599B0;">Trades Covered</div></div>
+            <div><div style="font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;color:#FFB347;line-height:1;letter-spacing:-0.02em;margin-bottom:6px;">12+</div><div style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;color:#8599B0;">Years Experience</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer-contact" style="background:#050A0F;border-top:1px solid rgba(0,212,255,0.2);padding:88px 72px 0;">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div class="footer-grid" style="display:grid;grid-template-columns:1.7fr 1fr 1.3fr 1fr;gap:64px;margin-bottom:64px;">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="1" y="1" width="13" height="13" stroke="#00D4FF" stroke-width="1.5"/><rect x="18" y="18" width="13" height="13" stroke="#FFB347" stroke-width="1.5"/><rect x="18" y="1" width="13" height="13" stroke="#00D4FF" stroke-width="1.5" opacity="0.35"/><rect x="1" y="18" width="13" height="13" stroke="#00D4FF" stroke-width="1.5" opacity="0.35"/></svg>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.05em;color:#fff;">SYNDICATE <span style="color:#00D4FF;">ENGINEERING</span></div>
+        </div>
+        <p style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;line-height:1.85;margin-bottom:32px;">Your Best Pre-Construction Partner. Engineering precision across every phase of construction, delivered worldwide.</p>
+        <div style="display:flex;gap:12px;">
+          <a href="https://www.linkedin.com/company/syndicate-engineering-services" class="social-btn" style="width:38px;height:38px;border:1px solid rgba(0,212,255,0.2);display:flex;align-items:center;justify-content:center;transition:border-color 0.2s,background 0.2s;" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="#8599B0" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="https://www.facebook.com/people/Syndicate-Engineering-Services/100089249637310/" class="social-btn" style="width:38px;height:38px;border:1px solid rgba(0,212,255,0.2);display:flex;align-items:center;justify-content:center;transition:border-color 0.2s,background 0.2s;" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="#8599B0" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#00D4FF;margin-bottom:28px;">Quick Links</div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <a href="index.html" class="footer-link" style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;transition:color 0.2s;">Home</a>
+          <a href="services.html" class="footer-link" style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;transition:color 0.2s;">Services</a>
+          <a href="samples.html" class="footer-link" style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;transition:color 0.2s;">Samples</a>
+          <a href="get-a-quote.html" class="footer-link" style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;transition:color 0.2s;">Request a Quote</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#00D4FF;margin-bottom:28px;">Contact</div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div><div style="font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#C8D6E5;margin-bottom:5px;">Address</div><div style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;line-height:1.65;">2639 McCormick Drive,<br>Clearwater, FL 33759, USA</div></div>
+          <div><div style="font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#C8D6E5;margin-bottom:5px;">Phone</div><a href="tel:+12393002279" class="footer-link" style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;transition:color 0.2s;">+1 239 300 2279</a></div>
+          <div><div style="font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#C8D6E5;margin-bottom:5px;">Email</div><a href="mailto:info@syndicateengineering.com" class="footer-link" style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;transition:color 0.2s;">info@syndicateengineering.com</a></div>
+          <div><div style="font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#C8D6E5;margin-bottom:5px;">Hours</div><div style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;">Mon – Sat: 08:00 – 18:00</div></div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#00D4FF;margin-bottom:28px;">Address</div>
+        <div style="border:1px solid rgba(0,212,255,0.15);padding:20px;background:rgba(10,22,40,0.5);">
+          <div style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;line-height:1.8;">2639 McCormick Drive<br>Clearwater, FL 33759<br>United States</div>
+          <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(0,212,255,0.1);">
+            <a href="https://maps.google.com/?q=2639+McCormick+Drive+Clearwater+FL+33759" target="_blank" rel="noopener" style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:#00D4FF;letter-spacing:0.08em;text-transform:uppercase;">View on Map →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(0,212,255,0.1);padding:24px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:#8599B0;font-weight:300;">© 2026 Syndicate Engineering. All rights reserved.</div>
+      <div style="display:flex;gap:28px;">
+        <a href="#" class="footer-link" style="font-family:'DM Sans',sans-serif;font-size:12px;color:#8599B0;font-weight:300;transition:color 0.2s;">Privacy Policy</a>
+        <a href="#" class="footer-link" style="font-family:'DM Sans',sans-serif;font-size:12px;color:#8599B0;font-weight:300;transition:color 0.2s;">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var burger = document.getElementById('nav-burger');
+  var drawer = document.getElementById('nav-drawer');
+  if (burger && drawer) {
+    var setOpen = function(o) { drawer.classList.toggle('open', o); burger.classList.toggle('open', o); burger.setAttribute('aria-expanded', String(o)); document.body.classList.toggle('nav-locked', o); };
+    burger.addEventListener('click', function() { setOpen(!drawer.classList.contains('open')); });
+    drawer.addEventListener('click', function(e) { if (e.target.closest('a')) setOpen(false); });
+    window.addEventListener('keydown', function(e) { if (e.key === 'Escape') setOpen(false); });
+  }
+  var nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', function() { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+  var reveals = document.querySelectorAll('.reveal');
+  var obs = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(function(el) { obs.observe(el); });
+
+  // Form submission
+  var form = document.getElementById('form-live');
+  var formDone = document.getElementById('form-done');
+  var formError = document.getElementById('form-error');
+  var emailError = document.getElementById('email-error');
+
+  var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var name = document.getElementById('q-name');
+      var email = document.getElementById('q-email');
+      var service = document.getElementById('q-service');
+      var valid = true;
+
+      [name, email, service].forEach(function(el) { el.classList.remove('error'); });
+      formError.style.display = 'none';
+      emailError.style.display = 'none';
+
+      if (!name.value.trim()) { name.classList.add('error'); valid = false; }
+      if (!email.value.trim() || !emailRe.test(email.value.trim())) { email.classList.add('error'); emailError.style.display = 'block'; valid = false; }
+      if (!service.value) { service.classList.add('error'); valid = false; }
+
+      if (!valid) { formError.style.display = 'block'; return; }
+
+      // Encode form as mailto (static site — no backend)
+      var subject = encodeURIComponent('Quote Request: ' + service.value + ' — ' + name.value.trim());
+      var body = encodeURIComponent(
+        'Name: ' + name.value.trim() + '\n' +
+        'Company: ' + (document.getElementById('q-company').value || 'N/A') + '\n' +
+        'Email: ' + email.value.trim() + '\n' +
+        'Phone: ' + (document.getElementById('q-phone').value || 'N/A') + '\n' +
+        'Service: ' + service.value + '\n' +
+        'Location: ' + (document.getElementById('q-location').value || 'N/A') + '\n' +
+        'Bid Date: ' + (document.getElementById('q-bid-date').value || 'N/A') + '\n\n' +
+        'Project Details:\n' + (document.getElementById('q-scope').value || 'N/A')
+      );
+      window.location.href = 'mailto:info@syndicateengineering.com?subject=' + subject + '&body=' + body;
+
+      form.style.display = 'none';
+      formDone.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+});
+</script>
+</body>
+</html>

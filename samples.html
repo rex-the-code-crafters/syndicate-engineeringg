@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Samples — Syndicate Engineering</title>
+<meta name="description" content="Download real construction estimate samples — drywall, framing, MEP, lumber takeoffs, BIM drawings, and more. Free, no form required.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: #050A0F; color: #fff; font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+
+  .reveal { opacity: 0; transform: translateY(44px); transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  #main-nav.scrolled { background: rgba(5,10,15,0.92) !important; backdrop-filter: blur(24px) !important; border-bottom-color: rgba(0,212,255,0.15) !important; }
+  .nav-links a:hover { color: #00D4FF !important; }
+
+  @media (max-width: 1024px) { .nav-links { display: none !important; } .nav-phone { display: none !important; } }
+  @media (max-width: 768px) { #main-nav { padding: 0 20px !important; } .hero-inner { padding: 0 28px !important; } .samples-grid { grid-template-columns: 1fr 1fr !important; } .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 40px !important; } }
+  @media (max-width: 560px) { .nav-cta { display: none !important; } .logo-sub { display: none !important; } .samples-grid { grid-template-columns: 1fr !important; } }
+  @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr !important; } .feat-grid { grid-template-columns: 1fr !important; } }
+
+  .nav-burger { display: none !important; }
+  @media (max-width: 1024px) { .nav-burger { display: flex !important; } }
+  #nav-drawer.open { transform: translateX(0) !important; }
+  body.nav-locked { overflow: hidden; }
+  #nav-burger.open .bl1 { transform: translateY(6.5px) rotate(45deg); }
+  #nav-burger.open .bl2 { opacity: 0; }
+  #nav-burger.open .bl3 { transform: translateY(-6.5px) rotate(-45deg); }
+  .dl-item { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 27px; font-weight: 600; color: #fff; letter-spacing: -.01em; padding: 17px 0; border-bottom: 1px solid rgba(0,212,255,.1); transition: color .2s, padding-left .25s; }
+  .dl-item:hover { color: #00D4FF; padding-left: 9px; }
+
+  .sample-card { transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease; }
+  .sample-card:hover { transform: translateY(-6px); box-shadow: 0 8px 48px rgba(0,212,255,0.14); border-color: rgba(0,212,255,0.4) !important; }
+  .sample-card.hidden { display: none !important; }
+  .sample-card:hover .card-img { transform: scale(1.05); }
+  .card-img { transition: transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+  .dl-btn { transition: background 0.2s, color 0.2s, box-shadow 0.2s; }
+  .dl-btn:hover { background: #00D4FF !important; color: #050A0F !important; box-shadow: 0 0 20px rgba(0,212,255,0.35) !important; }
+
+  .filter-btn { transition: background 0.2s, color 0.2s, border-color 0.2s; }
+  .filter-btn:hover { background: rgba(0,212,255,0.08) !important; }
+  .filter-btn.active { background: #00D4FF !important; color: #050A0F !important; border-color: #00D4FF !important; }
+
+  .feat-card { transition: border-color 0.3s, box-shadow 0.3s; }
+  .feat-card:hover { border-color: rgba(0,212,255,0.4) !important; box-shadow: 0 8px 48px rgba(0,212,255,0.1); }
+
+  .footer-link:hover { color: #00D4FF !important; }
+  .social-btn:hover { border-color: #00D4FF !important; background: rgba(0,212,255,0.08) !important; }
+
+  /* Mobile: featured deliverables grid */
+  @media (max-width: 900px) { .feat-grid { grid-template-columns: 1fr 1fr !important; } }
+  @media (max-width: 560px) { .feat-grid { grid-template-columns: 1fr !important; } }
+  /* Mobile: "What You Receive" 4-column grid */
+  @media (max-width: 768px) { .receive-grid { grid-template-columns: 1fr 1fr !important; } }
+  @media (max-width: 480px) { .receive-grid { grid-template-columns: 1fr !important; } }
+  /* Mobile: footer padding */
+  @media (max-width: 768px) {
+    footer { padding-left: 28px !important; padding-right: 28px !important; }
+    .sec-inner { padding-left: 28px !important; padding-right: 28px !important; }
+  }
+  /* Mobile: section padding */
+  @media (max-width: 768px) {
+    section[style*="padding:"] { padding-left: 28px !important; padding-right: 28px !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav" style="position:fixed;top:0;left:0;right:0;z-index:1000;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;border-bottom:1px solid transparent;transition:all 0.4s ease;">
+  <a href="index.html" style="display:flex;align-items:center;gap:14px;">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="1" y="1" width="13" height="13" stroke="#00D4FF" stroke-width="1.5"/><rect x="18" y="1" width="13" height="13" stroke="#00D4FF" stroke-width="1.5" opacity="0.35"/><rect x="1" y="18" width="13" height="13" stroke="#00D4FF" stroke-width="1.5" opacity="0.35"/><rect x="18" y="18" width="13" height="13" stroke="#FFB347" stroke-width="1.5"/><line x1="14" y1="7.5" x2="18" y2="7.5" stroke="#00D4FF" stroke-width="1"/><line x1="7.5" y1="14" x2="7.5" y2="18" stroke="#00D4FF" stroke-width="1"/><line x1="24.5" y1="14" x2="24.5" y2="18" stroke="#FFB347" stroke-width="1"/></svg>
+    <div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;letter-spacing:0.05em;color:#fff;line-height:1.1;">SYNDICATE <span style="color:#00D4FF;">ENGINEERING</span></div>
+      <div class="logo-sub" style="font-family:'DM Sans',sans-serif;font-size:9px;color:#8599B0;letter-spacing:0.22em;text-transform:uppercase;margin-top:2px;">Pre-Construction Excellence</div>
+    </div>
+  </a>
+  <div class="nav-links" style="display:flex;align-items:center;gap:36px;">
+    <a href="index.html" style="font-family:'DM Sans',sans-serif;font-size:12px;color:#C8D6E5;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;">Home</a>
+    <a href="index.html#about" style="font-family:'DM Sans',sans-serif;font-size:12px;color:#C8D6E5;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;">About</a>
+    <a href="services.html" style="font-family:'DM Sans',sans-serif;font-size:12px;color:#C8D6E5;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;">Services</a>
+    <a href="samples.html" style="font-family:'DM Sans',sans-serif;font-size:12px;color:#00D4FF;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;">Samples</a>
+    <a href="index.html#contact" style="font-family:'DM Sans',sans-serif;font-size:12px;color:#C8D6E5;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;">Contact</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:20px;">
+    <span class="nav-phone" style="font-family:'DM Sans',sans-serif;font-size:13px;color:#8599B0;">+1 239 300 2279</span>
+    <a class="nav-cta" href="get-a-quote.html" style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;color:#00D4FF;border:1.5px solid #00D4FF;padding:9px 22px;letter-spacing:0.1em;text-transform:uppercase;box-shadow:0 0 12px rgba(0,212,255,0.15);transition:all 0.3s;">Get a Quote →</a>
+    <button class="nav-burger" id="nav-burger" type="button" aria-label="Open menu" aria-expanded="false" style="align-items:center;justify-content:center;width:42px;height:42px;background:transparent;border:1px solid rgba(0,212,255,.3);cursor:pointer;padding:0;flex-shrink:0;">
+      <span style="display:flex;flex-direction:column;gap:5px;">
+        <span class="bl bl1" style="display:block;width:18px;height:1.5px;background:#00D4FF;transition:transform .3s,opacity .3s;"></span>
+        <span class="bl bl2" style="display:block;width:18px;height:1.5px;background:#00D4FF;transition:transform .3s,opacity .3s;"></span>
+        <span class="bl bl3" style="display:block;width:18px;height:1.5px;background:#00D4FF;transition:transform .3s,opacity .3s;"></span>
+      </span>
+    </button>
+  </div>
+</nav>
+
+<div id="nav-drawer" style="position:fixed;inset:0;z-index:999;transform:translateX(100%);transition:transform .45s cubic-bezier(.16,1,.3,1);flex-direction:column;justify-content:center;padding:104px 32px 44px;background:rgba(5,10,15,.98);display:flex;overflow-y:auto;">
+  <div style="display:flex;flex-direction:column;">
+    <a class="dl-item" href="index.html">Home</a>
+    <a class="dl-item" href="index.html#about">About</a>
+    <a class="dl-item" href="services.html">Services</a>
+    <a class="dl-item" href="samples.html" style="color:#00D4FF;">Samples</a>
+    <a class="dl-item" href="index.html#contact">Contact</a>
+  </div>
+  <div style="margin-top:40px;display:flex;flex-direction:column;gap:14px;">
+    <a href="get-a-quote.html" style="display:block;text-align:center;background:#00D4FF;color:#050A0F;font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:17px 24px;">Get a Free Quote →</a>
+    <a href="tel:+12393002279" style="font-family:'DM Sans',sans-serif;font-size:15px;color:#8599B0;">+1 239 300 2279</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section style="padding:160px 72px 100px;background-color:#050A0F;background-image:linear-gradient(rgba(0,212,255,0.032) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.032) 1px,transparent 1px);background-size:64px 64px;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:50%;right:-10%;transform:translateY(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(255,179,71,0.06) 0%,transparent 65%);pointer-events:none;" aria-hidden="true"></div>
+  <div class="hero-inner reveal" style="max-width:1280px;margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;font-family:'DM Sans',sans-serif;font-size:13px;color:#8599B0;">
+      <a href="index.html" style="color:#8599B0;transition:color 0.2s;">Home</a>
+      <span style="color:#3D5068;">/</span>
+      <span style="color:#00D4FF;">Samples</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+      <div style="width:32px;height:1px;background:#FFB347;"></div>
+      <span style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:#FFB347;">Proof, Not Promises</span>
+    </div>
+    <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(38px,5vw,76px);font-weight:700;letter-spacing:-0.025em;color:#fff;line-height:1.06;margin-bottom:22px;">Real Work.<br><span style="color:#00D4FF;">Real Results.</span></h1>
+    <p style="font-family:'DM Sans',sans-serif;font-size:18px;font-weight:300;color:#8599B0;max-width:640px;line-height:1.75;">Download complete estimates, shop drawings, and construction schedules from live projects — no gatekeeping, no form required.</p>
+  </div>
+</section>
+
+<!-- NOTICE STRIP -->
+<div style="background:#0A1628;border-top:1px solid rgba(255,179,71,0.3);border-bottom:1px solid rgba(255,179,71,0.3);padding:18px 72px;">
+  <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8" stroke="#FFB347" stroke-width="1.2"/><line x1="9" y1="5" x2="9" y2="10" stroke="#FFB347" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="13" r="0.8" fill="#FFB347"/></svg>
+    <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:#8599B0;line-height:1.6;">All samples are from real completed projects. Client details have been anonymized where applicable. These files are provided for evaluation purposes.</p>
+  </div>
+</div>
+
+<!-- FILTER + SAMPLES GRID -->
+<section style="padding:80px 72px 120px;background:#050A0F;">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div class="reveal" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:56px;">
+      <button class="filter-btn active" data-filter="all" style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:10px 22px;background:#00D4FF;color:#050A0F;border:1.5px solid #00D4FF;cursor:pointer;">All Trades</button>
+      <button class="filter-btn" data-filter="architectural" style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:10px 22px;background:transparent;color:#8599B0;border:1.5px solid rgba(0,212,255,0.2);cursor:pointer;">Architectural</button>
+      <button class="filter-btn" data-filter="mep" style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:10px 22px;background:transparent;color:#8599B0;border:1.5px solid rgba(0,212,255,0.2);cursor:pointer;">MEP</button>
+      <button class="filter-btn" data-filter="finishes" style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:10px 22px;background:transparent;color:#8599B0;border:1.5px solid rgba(0,212,255,0.2);cursor:pointer;">Finishes</button>
+    </div>
+
+    <div class="samples-grid reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;">
+
+      <article class="sample-card" data-cat="finishes" style="background:rgba(10,22,40,0.65);border:1px solid rgba(0,212,255,0.17);overflow:hidden;">
+        <div style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#071220;">
+          <img class="card-img" src="https://syndicateengineering.com/wp-content/uploads/2023/03/drywall.jpg" alt="Drywall estimate sample" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.6);"/>
+          <div style="position:absolute;top:12px;left:12px;background:rgba(5,10,15,0.85);backdrop-filter:blur(8px);padding:4px 10px;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:#FFB347;border:1px solid rgba(255,179,71,0.3);">Finishes</div>
+        </div>
+        <div style="padding:24px;">
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:#fff;margin-bottom:6px;">Drywall Estimate</h3>
+          <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:#8599B0;line-height:1.6;margin-bottom:20px;">78-Unit Apartment Building — full board, stud, tape &amp; finish takeoff with labor.</p>
+          <a href="https://syndicateengineering.com/wp-content/uploads/2023/03/Drywall-Estimating-Sample.pdf" target="_blank" rel="noopener" class="dl-btn" style="display:block;text-align:center;background:transparent;color:#00D4FF;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:11px;border:1.5px solid rgba(0,212,255,0.35);">Download PDF ↓</a>
+        </div>
+      </article>
+
+      <article class="sample-card" data-cat="architectural" style="background:rgba(10,22,40,0.65);border:1px solid rgba(0,212,255,0.17);overflow:hidden;">
+        <div style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#071220;">
+          <img class="card-img" src="https://syndicateengineering.com/wp-content/uploads/2023/03/structural-design.jpg" alt="Steel structure shop drawings" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.6);"/>
+          <div style="position:absolute;top:12px;left:12px;background:rgba(5,10,15,0.85);backdrop-filter:blur(8px);padding:4px 10px;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:#00D4FF;border:1px solid rgba(0,212,255,0.3);">Architectural</div>
+        </div>
+        <div style="padding:24px;">
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:#fff;margin-bottom:6px;">Steel Structure Shop Drawings</h3>
+          <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:#8599B0;line-height:1.6;margin-bottom:20px;">Warehouse project — complete structural steel fabrication and erection drawings.</p>
+          <a href="https://syndicateengineering.com/wp-content/uploads/2023/03/Shop-Drawings-Sample.pdf" target="_blank" rel="noopener" class="dl-btn" style="display:block;text-align:center;background:transparent;color:#00D4FF;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:11px;border:1.5px solid rgba(0,212,255,0.35);">Download PDF ↓</a>
+        </div>
+      </article>
+
+      <article class="sample-card" data-cat="architectural" style="background:rgba(10,22,40,0.65);border:1px solid rgba(0,212,255,0.17);overflow:hidden;">
+        <div style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#071220;">
+          <img class="card-img" src="https://syndicateengineering.com/wp-content/uploads/2023/04/magic-marker-hand-rendering.jpg" alt="3D interior rendering sample" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.6);"/>
+          <div style="position:absolute;top:12px;left:12px;background:rgba(5,10,15,0.85);backdrop-filter:blur(8px);padding:4px 10px;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:#00D4FF;border:1px solid rgba(0,212,255,0.3);">Architectural</div>
+        </div>
+        <div style="padding:24px;">
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:#fff;margin-bottom:6px;">3D Interior Floor Plans</h3>
+          <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:#8599B0;line-height:1.6;margin-bottom:20px;">Residential remodel — full 3D rendered floor plans with furniture layout and finishes.</p>
+          <a href="https://syndicateengineering.com/wp-content/uploads/2023/04/3D-Interior-Sample.pdf" target="_blank" rel="noopener" class="dl-btn" style="display:block;text-align:center;background:transparent;color:#00D4FF;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:11px;border:1.5px solid rgba(0,212,255,0.35);">Download PDF ↓</a>
+        </div>
+      </article>
+
+      <article class="sample-card" data-cat="mep" style="background:rgba(10,22,40,0.65);border:1px solid rgba(0,212,255,0.17);overflow:hidden;">
+        <div style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#071220;">
+          <img class="card-img" src="https://syndicateengineering.com/wp-content/uploads/2023/03/plumbing.jpg" alt="Plumbing estimate sample" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.6);"/>
+          <div style="position:absolute;top:12px;left:12px;background:rgba(5,10,15,0.85);backdrop-filter:blur(8px);padding:4px 10px;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:#00D4FF;border:1px solid rgba(0,212,255,0.3);">MEP</div>
+        </div>
+        <div style="padding:24px;">
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:#fff;margin-bottom:6px;">Plumbing Estimate</h3>
+          <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:#8599B0;line-height:1.6;margin-bottom:20px;">Commercial office building — pipe, fixture, and labor cost estimate across all plumbing systems.</p>
+          <a href="https://syndicateengineering.com/wp-content/uploads/2023/03/Plumbing-Estimating-Sample.pdf" target="_blank" rel="noopener" class="dl-btn" style="display:block;text-align:center;background:transparent;color:#00D4FF;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:11px;border:1.5px solid rgba(0,212,255,0.35);">Download PDF ↓</a>
+        </div>
+      </article>
+
+      <article class="sample-card" data-cat="finishes" style="background:rgba(10,22,40,0.65);border:1px solid rgba(0,212,255,0.17);overflow:hidden;">
+        <div style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#071220;">
+          <img class="card-img" src="https://syndicateengineering.com/wp-content/uploads/2023/03/flooring.jpg" alt="Flooring estimate sample" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.6);"/>
+          <div style="position:absolute;top:12px;left:12px;background:rgba(5,10,15,0.85);backdrop-filter:blur(8px);padding:4px 10px;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:#FFB347;border:1px solid rgba(255,179,71,0.3);">Finishes</div>
+        </div>
+        <div style="padding:24px;">
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:#fff;margin-bottom:6px;">Flooring Estimate</h3>
+          <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:#8599B0;line-height:1.6;margin-bottom:20px;">Multi-family residential — tile, LVT, and carpet takeoff with waste factors and material costs.</p>
+          <a href="https://syndicateengineering.com/wp-content/uploads/2023/03/Flooring-Estimating-Sample.pdf" target="_blank" rel="noopener" class="dl-btn" style="display:block;text-align:center;background:transparent;color:#00D4FF;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:11px;border:1.5px solid rgba(0,212,255,0.35);">Download PDF ↓</a>
+        </div>
+      </article>
+
+      <article class="sample-card" data-cat="architectural" style="background:rgba(10,22,40,0.65);border:1px solid rgba(0,212,255,0.17);overflow:hidden;">
+        <div style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#071220;">
+          <img class="card-img" src="https://syndicateengineering.com/wp-content/uploads/2023/03/framing.jpg" alt="Framing estimate sample" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.6);"/>
+          <div style="position:absolute;top:12px;left:12px;background:rgba(5,10,15,0.85);backdrop-filter:blur(8px);padding:4px 10px;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:#00D4FF;border:1px solid rgba(0,212,255,0.3);">Architectural</div>
+        </div>
+        <div style="padding:24px;">
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:#fff;margin-bottom:6px;">Framing Estimate</h3>
+          <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:#8599B0;line-height:1.6;margin-bottom:20px;">Single-family home — complete wood framing material and labor estimate with cut list.</p>
+          <a href="https://syndicateengineering.com/wp-content/uploads/2023/03/Framing-Estimating-Sample.pdf" target="_blank" rel="noopener" class="dl-btn" style="display:block;text-align:center;background:transparent;color:#00D4FF;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:11px;border:1.5px solid rgba(0,212,255,0.35);">Download PDF ↓</a>
+        </div>
+      </article>
+
+      <article class="sample-card" data-cat="mep" style="background:rgba(10,22,40,0.65);border:1px solid rgba(0,212,255,0.17);overflow:hidden;">
+        <div style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#071220;">
+          <img class="card-img" src="https://syndicateengineering.com/wp-content/uploads/2023/03/electrical.jpg" alt="Electrical estimate sample" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.6);"/>
+          <div style="position:absolute;top:12px;left:12px;background:rgba(5,10,15,0.85);backdrop-filter:blur(8px);padding:4px 10px;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:#00D4FF;border:1px solid rgba(0,212,255,0.3);">MEP</div>
+        </div>
+        <div style="padding:24px;">
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:#fff;margin-bottom:6px;">Electrical Takeoff</h3>
+          <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:#8599B0;line-height:1.6;margin-bottom:20px;">Retail center — conduit, wiring, panel, and device schedule with detailed labor units.</p>
+          <a href="https://syndicateengineering.com/wp-content/uploads/2023/03/Electrical-Estimating-Sample.pdf" target="_blank" rel="noopener" class="dl-btn" style="display:block;text-align:center;background:transparent;color:#00D4FF;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:11px;border:1.5px solid rgba(0,212,255,0.35);">Download PDF ↓</a>
+        </div>
+      </article>
+
+      <article class="sample-card" data-cat="architectural" style="background:rgba(10,22,40,0.65);border:1px solid rgba(0,212,255,0.17);overflow:hidden;">
+        <div style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#071220;">
+          <img class="card-img" src="https://syndicateengineering.com/wp-content/uploads/2023/03/lumber.jpg" alt="Lumber takeoff sample" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.6);"/>
+          <div style="position:absolute;top:12px;left:12px;background:rgba(5,10,15,0.85);backdrop-filter:blur(8px);padding:4px 10px;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:#00D4FF;border:1px solid rgba(0,212,255,0.3);">Architectural</div>
+        </div>
+        <div style="padding:24px;">
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:#fff;margin-bottom:6px;">Lumber Takeoff</h3>
+          <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:#8599B0;line-height:1.6;margin-bottom:20px;">Townhouse complex — itemized lumber package by species, size, and quantity with supplier format.</p>
+          <a href="https://syndicateengineering.com/wp-content/uploads/2023/03/Lumber-Takeoff-Sample.pdf" target="_blank" rel="noopener" class="dl-btn" style="display:block;text-align:center;background:transparent;color:#00D4FF;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:11px;border:1.5px solid rgba(0,212,255,0.35);">Download PDF ↓</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED DELIVERABLES -->
+<section style="padding:100px 72px;background:#0A1628;border-top:1px solid rgba(0,212,255,0.15);">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div class="reveal" style="margin-bottom:56px;">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+        <div style="width:32px;height:1px;background:#FFB347;"></div>
+        <span style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:#FFB347;">Featured Deliverables</span>
+      </div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(30px,4vw,48px);font-weight:700;letter-spacing:-0.02em;color:#fff;">Our Best Work</h2>
+    </div>
+    <div class="feat-grid reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+      <div class="feat-card" style="background:rgba(5,10,15,0.8);border:1px solid rgba(0,212,255,0.15);border-top:2px solid #00D4FF;padding:44px 36px;">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#00D4FF" stroke-width="1.5" stroke-linecap="round" style="margin-bottom:28px;" aria-hidden="true"><rect x="5" y="3" width="22" height="34" rx="1"/><line x1="9" y1="11" x2="23" y2="11"/><line x1="9" y1="17" x2="23" y2="17"/><line x1="9" y1="23" x2="17" y2="23"/><path d="M29 25 L35 31 L29 37" fill="none"/><line x1="27" y1="31" x2="35" y2="31"/></svg>
+        <div style="font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#00D4FF;margin-bottom:14px;">Detailed Estimate</div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;line-height:1.3;">Commercial MEP Package</h3>
+        <p style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;line-height:1.75;margin-bottom:32px;">Full mechanical, electrical, and plumbing cost estimate for a 6-story office building. Includes labor breakdown and material schedules.</p>
+        <a href="https://syndicateengineering.com/wp-content/uploads/2023/03/MEP-Package-Sample.pdf" target="_blank" rel="noopener" class="dl-btn" style="display:inline-block;background:transparent;color:#00D4FF;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:12px 24px;border:1.5px solid rgba(0,212,255,0.35);">Download Full Sample ↓</a>
+      </div>
+      <div class="feat-card" style="background:rgba(5,10,15,0.8);border:1px solid rgba(0,212,255,0.15);border-top:2px solid #FFB347;padding:44px 36px;">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#FFB347" stroke-width="1.5" stroke-linecap="round" style="margin-bottom:28px;" aria-hidden="true"><rect x="3" y="3" width="34" height="34"/><line x1="3" y1="13" x2="37" y2="13"/><line x1="3" y1="23" x2="37" y2="23"/><line x1="13" y1="3" x2="13" y2="37"/><line x1="23" y1="3" x2="23" y2="37"/></svg>
+        <div style="font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#FFB347;margin-bottom:14px;">BIM Model</div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;line-height:1.3;">Hospital BIM Coordination</h3>
+        <p style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;line-height:1.75;margin-bottom:32px;">Multi-discipline BIM coordination model for a 12-story hospital. Clash detection report and resolved model screenshots included.</p>
+        <a href="https://syndicateengineering.com/wp-content/uploads/2023/03/BIM-Sample.pdf" target="_blank" rel="noopener" class="dl-btn" style="display:inline-block;background:transparent;color:#00D4FF;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:12px 24px;border:1.5px solid rgba(0,212,255,0.35);">Download Full Sample ↓</a>
+      </div>
+      <div class="feat-card" style="background:rgba(5,10,15,0.8);border:1px solid rgba(0,212,255,0.15);border-top:2px solid #00D4FF;padding:44px 36px;">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#00D4FF" stroke-width="1.5" stroke-linecap="round" style="margin-bottom:28px;" aria-hidden="true"><rect x="5" y="5" width="30" height="30"/><line x1="5" y1="15" x2="35" y2="15"/><line x1="14" y1="5" x2="14" y2="35"/><circle cx="9.5" cy="10" r="1.5" fill="#00D4FF" stroke="none"/><polyline points="14,28 20,22 26,26 35,18" stroke="#00D4FF" stroke-width="1.5" fill="none"/></svg>
+        <div style="font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#00D4FF;margin-bottom:14px;">Project Schedule</div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;line-height:1.3;">Residential Construction Schedule</h3>
+        <p style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;line-height:1.75;margin-bottom:32px;">12-month master schedule for a 24-unit residential development. Includes critical path, milestones, and resource loading.</p>
+        <a href="https://syndicateengineering.com/wp-content/uploads/2023/03/Schedule-Sample.pdf" target="_blank" rel="noopener" class="dl-btn" style="display:inline-block;background:transparent;color:#00D4FF;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:12px 24px;border:1.5px solid rgba(0,212,255,0.35);">Download Full Sample ↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU RECEIVE -->
+<section style="padding:100px 72px;background:#050A0F;">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div class="reveal" style="margin-bottom:64px;text-align:center;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:16px;">
+        <div style="width:32px;height:1px;background:#00D4FF;"></div>
+        <span style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:#00D4FF;">Deliverables</span>
+        <div style="width:32px;height:1px;background:#00D4FF;"></div>
+      </div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(30px,4vw,48px);font-weight:700;letter-spacing:-0.02em;color:#fff;">What You Actually Receive</h2>
+    </div>
+    <div class="reveal receive-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;">
+      <div style="background:rgba(10,22,40,0.65);border:1px solid rgba(0,212,255,0.15);padding:40px 32px;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:700;color:#00D4FF;line-height:1;margin-bottom:16px;letter-spacing:-0.03em;">XLS</div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#fff;margin-bottom:10px;">Spreadsheet Takeoffs</h3>
+        <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:#8599B0;line-height:1.7;">Fully unlocked Excel files with itemized quantities, unit costs, labor, and totals — ready to import into any estimating platform.</p>
+      </div>
+      <div style="background:rgba(10,22,40,0.65);border:1px solid rgba(0,212,255,0.15);border-left:none;padding:40px 32px;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:700;color:#00D4FF;line-height:1;margin-bottom:16px;letter-spacing:-0.03em;">PDF</div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#fff;margin-bottom:10px;">Marked-Up Plans</h3>
+        <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:#8599B0;line-height:1.7;">Color-coded plan markups showing exactly what was measured — so you can verify every count against the drawings yourself.</p>
+      </div>
+      <div style="background:rgba(10,22,40,0.65);border:1px solid rgba(0,212,255,0.15);border-left:none;padding:40px 32px;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:700;color:#00D4FF;line-height:1;margin-bottom:16px;letter-spacing:-0.03em;">DWG</div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#fff;margin-bottom:10px;">CAD &amp; BIM Files</h3>
+        <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:#8599B0;line-height:1.7;">Native AutoCAD and Revit files with full layer structure — ready for coordination or direct use in your project workflow.</p>
+      </div>
+      <div style="background:rgba(10,22,40,0.65);border:1px solid rgba(0,212,255,0.15);border-left:none;padding:40px 32px;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:700;color:#FFB347;line-height:1;margin-bottom:16px;letter-spacing:-0.03em;">24H</div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#fff;margin-bottom:10px;">Fast Turnaround</h3>
+        <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:#8599B0;line-height:1.7;">Most estimates delivered within 24–48 hours of plan receipt. Rush delivery available for urgent bid deadlines.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:100px 72px;background:#0A1628;border-top:1px solid rgba(0,212,255,0.15);">
+  <div style="max-width:700px;margin:0 auto;text-align:center;" class="reveal">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-0.025em;color:#fff;line-height:1.06;margin-bottom:18px;">Like What You See?</h2>
+    <p style="font-family:'DM Sans',sans-serif;font-size:18px;font-weight:300;color:#8599B0;margin-bottom:44px;">Get this quality on your next project. Free quote, fast response.</p>
+    <a href="get-a-quote.html" style="display:inline-block;background:#00D4FF;color:#050A0F;font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;padding:19px 52px;border:1.5px solid #00D4FF;box-shadow:0 0 32px rgba(0,212,255,0.28);">Start Your Estimate →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact" style="background:#050A0F;border-top:1px solid rgba(0,212,255,0.2);padding:88px 72px 0;">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div class="footer-grid" style="display:grid;grid-template-columns:1.7fr 1fr 1.3fr 1fr;gap:64px;margin-bottom:64px;">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="1" y="1" width="13" height="13" stroke="#00D4FF" stroke-width="1.5"/><rect x="18" y="18" width="13" height="13" stroke="#FFB347" stroke-width="1.5"/><rect x="18" y="1" width="13" height="13" stroke="#00D4FF" stroke-width="1.5" opacity="0.35"/><rect x="1" y="18" width="13" height="13" stroke="#00D4FF" stroke-width="1.5" opacity="0.35"/></svg>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.05em;color:#fff;">SYNDICATE <span style="color:#00D4FF;">ENGINEERING</span></div>
+        </div>
+        <p style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;line-height:1.85;margin-bottom:32px;">Your Best Pre-Construction Partner. Engineering precision across every phase of construction, delivered worldwide.</p>
+        <div style="display:flex;gap:12px;">
+          <a href="https://www.linkedin.com/company/syndicate-engineering-services" class="social-btn" style="width:38px;height:38px;border:1px solid rgba(0,212,255,0.2);display:flex;align-items:center;justify-content:center;transition:border-color 0.2s,background 0.2s;" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="#8599B0" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="https://www.facebook.com/people/Syndicate-Engineering-Services/100089249637310/" class="social-btn" style="width:38px;height:38px;border:1px solid rgba(0,212,255,0.2);display:flex;align-items:center;justify-content:center;transition:border-color 0.2s,background 0.2s;" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="#8599B0" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#00D4FF;margin-bottom:28px;">Quick Links</div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <a href="index.html" class="footer-link" style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;transition:color 0.2s;">Home</a>
+          <a href="services.html" class="footer-link" style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;transition:color 0.2s;">Services</a>
+          <a href="samples.html" class="footer-link" style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;transition:color 0.2s;">Samples</a>
+          <a href="get-a-quote.html" class="footer-link" style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;transition:color 0.2s;">Request a Quote</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#00D4FF;margin-bottom:28px;">Contact</div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div><div style="font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#C8D6E5;margin-bottom:5px;">Address</div><div style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;line-height:1.65;">2639 McCormick Drive,<br>Clearwater, FL 33759, USA</div></div>
+          <div><div style="font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#C8D6E5;margin-bottom:5px;">Phone</div><a href="tel:+12393002279" class="footer-link" style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;transition:color 0.2s;">+1 239 300 2279</a></div>
+          <div><div style="font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#C8D6E5;margin-bottom:5px;">Email</div><a href="mailto:info@syndicateengineering.com" class="footer-link" style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;transition:color 0.2s;">info@syndicateengineering.com</a></div>
+          <div><div style="font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#C8D6E5;margin-bottom:5px;">Hours</div><div style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;">Mon – Sat: 08:00 – 18:00</div></div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#00D4FF;margin-bottom:28px;">Get Started</div>
+        <p style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:#8599B0;line-height:1.75;margin-bottom:24px;">Ready to get this quality on your next project?</p>
+        <a href="get-a-quote.html" style="display:block;text-align:center;background:#00D4FF;color:#050A0F;font-family:'DM Sans',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;padding:16px 20px;">Get a Free Quote →</a>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(0,212,255,0.1);padding:24px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:#8599B0;font-weight:300;">© 2026 Syndicate Engineering. All rights reserved.</div>
+      <div style="display:flex;gap:28px;">
+        <a href="#" class="footer-link" style="font-family:'DM Sans',sans-serif;font-size:12px;color:#8599B0;font-weight:300;transition:color 0.2s;">Privacy Policy</a>
+        <a href="#" class="footer-link" style="font-family:'DM Sans',sans-serif;font-size:12px;color:#8599B0;font-weight:300;transition:color 0.2s;">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var burger = document.getElementById('nav-burger');
+  var drawer = document.getElementById('nav-drawer');
+  if (burger && drawer) {
+    var setOpen = function(o) { drawer.classList.toggle('open', o); burger.classList.toggle('open', o); burger.setAttribute('aria-expanded', String(o)); document.body.classList.toggle('nav-locked', o); };
+    burger.addEventListener('click', function() { setOpen(!drawer.classList.contains('open')); });
+    drawer.addEventListener('click', function(e) { if (e.target.closest('a')) setOpen(false); });
+    window.addEventListener('keydown', function(e) { if (e.key === 'Escape') setOpen(false); });
+  }
+  var nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', function() { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+  var reveals = document.querySelectorAll('.reveal');
+  var obs = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(function(el) { obs.observe(el); });
+
+  var btns = document.querySelectorAll('.filter-btn');
+  var cards = document.querySelectorAll('.sample-card');
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var filter = btn.dataset.filter;
+      cards.forEach(function(card) {
+        if (filter === 'all' || card.dataset.cat === filter) card.classList.remove('hidden');
+        else card.classList.add('hidden');
+      });
+    });
+  });
+});
+</script>
+</body>
+</html>
